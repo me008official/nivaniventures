@@ -89,7 +89,7 @@ export default function OverviewPage() {
       </div>
 
       {/* Metrics Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/*<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {metrics.map((metric) => (
           <div 
             key={metric.id}
@@ -119,10 +119,10 @@ export default function OverviewPage() {
       </div>
 
       {/* Lower Section Grid: Recent Activity & Quick Shortcuts */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+     {/*} <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* Recent Orders Table List (Span 8) */}
-        <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-2xs space-y-6">
+        {/* <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200 shadow-2xs space-y-6">
           <div className="flex items-center justify-between border-b border-neutral-100 pb-4">
             <div>
               <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500">
@@ -169,13 +169,13 @@ export default function OverviewPage() {
               </tbody>
             </table>
           </div>
-        </div>
+        </div> */}
 
         {/* Quick Management Shortcuts / Status Widgets (Span 4) */}
-        <div className="lg:col-span-4 space-y-6">
+        {/* <div className="lg:col-span-4 space-y-6"> */}
           
           {/* System Status Card */}
-          <div className="bg-white p-6 rounded-2xl border border-neutral-200 shadow-2xs space-y-4">
+          {/* <div className="bg-white p-6 rounded-2xl border border-neutral-200 shadow-2xs space-y-4">
             <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500">
               System Health
             </h3>
@@ -206,10 +206,10 @@ export default function OverviewPage() {
               <span>Server Region</span>
               <span className="font-mono text-neutral-700 font-semibold">ap-south-1 (Mumbai)</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Quick Shortcuts List */}
-          <div className="bg-white p-6 rounded-2xl border border-neutral-200 shadow-2xs space-y-3">
+          {/* <div className="bg-white p-6 rounded-2xl border border-neutral-200 shadow-2xs space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500">
               Quick Controls
             </h3>
@@ -229,10 +229,10 @@ export default function OverviewPage() {
             </div>
           </div>
 
-        </div>
+        </div> */}
 
-      </div>
-
+      {/* </div> */}
+      
     </div>
   );
 }

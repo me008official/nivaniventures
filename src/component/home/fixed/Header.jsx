@@ -109,16 +109,19 @@ export default function Header() {
     const hash = await axios.get(
       "/api/v1/admin/auth/token?agent=" + agent + "&date=" + time,
     );
-    if (!hash) {
+    if (hash.status === 200) {
+      if (type === "login") {
+        return router.push(`/auth/login?source=${hash.data.data}`);
+      } else {
+        return router.push(`/auth/signin?source=${hash.data.data}`);
+      }
+
+    } else {
       return console.log(
         "your are not abel to acces the !page, please refresh the page",
       );
     }
-    if (type === "login") {
-      router.push(`/auth/login?source=${hash.data}`);
-    } else {
-      router.push(`/auth/signin?source=${hash.data}`);
-    }
+
   };
 
   return (
@@ -142,7 +145,7 @@ export default function Header() {
             <div className="header-brand">
               <Link
                 href="/"
-                className="text-lg md:text-xl font-bold text-black hover:text-gray-700 transition-colors overflow-hidden flex items-center" 
+                className="text-lg md:text-xl font-bold text-black hover:text-gray-700 transition-colors overflow-hidden flex items-center"
               >
                 <Image src="/landing-src/copy-logo.png" alt="Nivani Ventures" width={500} height={500} className="w-[60px] h-full object-cover" />
                 <div className="grid leading-tight">
@@ -173,11 +176,10 @@ export default function Header() {
                       setActive(data.label);
                       setHoveredIndex(null);
                     }}
-                    className={`py-2 px-5 rounded-full border border-black transition-colors duration-200 inline-block ${
-                      active === data.label
-                        ? "bg-black text-white"
-                        : "bg-transparent text-black hover:bg-gray-100"
-                    }`}
+                    className={`py-2 px-5 rounded-full border border-black transition-colors duration-200 inline-block ${active === data.label
+                      ? "bg-black text-white"
+                      : "bg-transparent text-black hover:bg-gray-100"
+                      }`}
                   >
                     {data.label}
                   </Link>
@@ -270,11 +272,10 @@ export default function Header() {
                           setActive(data.label);
                           if (!data.dropdown) setMobileMenuOpen(false);
                         }}
-                        className={`text-lg font-medium px-3 py-2 rounded-lg ${
-                          active === data.label
-                            ? "text-black font-bold"
-                            : "text-gray-700"
-                        }`}
+                        className={`text-lg font-medium px-3 py-2 rounded-lg ${active === data.label
+                          ? "text-black font-bold"
+                          : "text-gray-700"
+                          }`}
                       >
                         {data.label}
                       </Link>
@@ -289,9 +290,8 @@ export default function Header() {
                         >
                           <IoIosArrowDown
                             size={18}
-                            className={`transform transition-transform duration-200 ${
-                              mobileDropdownOpen === index ? "rotate-180" : ""
-                            }`}
+                            className={`transform transition-transform duration-200 ${mobileDropdownOpen === index ? "rotate-180" : ""
+                              }`}
                           />
                         </button>
                       )}

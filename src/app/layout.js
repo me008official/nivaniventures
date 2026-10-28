@@ -15,7 +15,7 @@ const playwriteUSModern = Playwrite_US_Modern({
   variable: '--font-playwrite', // Creates a CSS variable for Tailwind/global CSS
   display: 'swap',
 });
-const bricolage = Bricolage_Grotesque({
+const bricolage = Bricolage_Grotesque({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-bricolage', // Optional: if you want a CSS variable

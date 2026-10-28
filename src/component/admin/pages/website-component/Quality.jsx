@@ -17,7 +17,6 @@ import { useDropzone } from "react-dropzone";
 const INITIAL_MATERIALS = [
   {
     id: "hemp",
-    _id: "hemp",
     label: "Hemp",
     labelContent: "Hemp Fabric (NIVINI Hemp)",
     labelDesc:
@@ -72,7 +71,6 @@ const INITIAL_MATERIALS = [
   },
   {
     id: "organic-cotton",
-    _id: "organic-cotton",
     label: "Organic Cotton",
     labelContent: "Organic Cotton Fabric (NIVINI Cotton)",
     labelDesc:
@@ -89,7 +87,6 @@ const INITIAL_MATERIALS = [
   },
   {
     id: "nepali-suruwal",
-    _id: "nepali-suruwal",
     label: "Nepali Suruwal",
     labelContent: "Nepali Traditional Suruwal (NIVINI Traditional)",
     labelDesc:
@@ -205,7 +202,7 @@ export default function Quality() {
   };
 
   const currentMaterial =
-    materials.find((m) => (m._id || m.id) === activeMaterialId) || materials[0];
+    materials.find((m) => ( m.id) === activeMaterialId) || materials[0];
 
   const handleOpenEditMaterial = () => {
     setMaterialFormData({
@@ -220,7 +217,7 @@ export default function Quality() {
     e.preventDefault();
     setMaterials(
       materials.map((m) => {
-        if ((m._id || m.id) === activeMaterialId) {
+        if (( m.id) === activeMaterialId) {
           return {
             ...m,
             label: materialFormData.label,
@@ -281,7 +278,7 @@ export default function Quality() {
 
     setMaterials(
       materials.map((m) => {
-        if ((m._id || m.id) === activeMaterialId) {
+        if (( m.id) === activeMaterialId) {
           return { ...m, sections: updatedSections };
         }
         return m;
@@ -306,7 +303,7 @@ export default function Quality() {
     );
     setMaterials(
       materials.map((m) => {
-        if ((m._id || m.id) === activeMaterialId) {
+        if (( m.id) === activeMaterialId) {
           return { ...m, sections: updatedSections };
         }
         return m;

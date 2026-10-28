@@ -8,7 +8,7 @@ import { useDropzone } from "react-dropzone";
 
 const DEFAULT_VENTURES = [
   {
-    _id: "default-1",
+    service_id: "default-1",
     label: "Eco Tourism",
     title: "Eco Tourism",
     description:
@@ -88,7 +88,7 @@ export default function Services() {
   const queryClient = useQueryClient();
   const [successMessage, setSuccessMessage] = useState("");
   const [ventures, setVentures] = useState(DEFAULT_VENTURES);
-  const [activeTabId, setActiveTabId] = useState(DEFAULT_VENTURES[0]._id);
+  const [activeTabId, setActiveTabId] = useState(DEFAULT_VENTURES[0].service_id);
 
   const { isLoading } = useQuery({
     queryKey: ["services"],
@@ -99,7 +99,7 @@ export default function Services() {
       if (Array.isArray(responseData) && responseData.length > 0) {
         setVentures(responseData);
         setActiveTabId((prev) =>
-          responseData.some((v) => v._id === prev) ? prev : responseData[0]._id,
+          responseData.some((v) => v.service_id === prev) ? prev : responseData[0].service_id,
         );
       }
       return responseData;
@@ -107,23 +107,22 @@ export default function Services() {
   });
 
   const activeVenture =
-    ventures?.find((v) => v._id === activeTabId) ||
+    ventures?.find((v) => v.service_id === activeTabId) ||
     ventures?.[0] ||
     DEFAULT_VENTURES[0];
 
   const handleFieldChange = (field, value) => {
     setVentures((prev) =>
       prev.map((item) =>
-        item._id === activeTabId ? { ...item, [field]: value } : item,
+        item.service_id === activeTabId ? { ...item, [field]: value } : item,
       ),
     );
   };
 
-  // FIXED: Updated to use card index instead of id to ensure precise independent updates
   const handleCardIndexChange = (cardIndex, field, value) => {
     setVentures((prev) =>
       prev.map((item) => {
-        if (item._id !== activeTabId) return item;
+        if (item.service_id !== activeTabId) return item;
         const updatedCards = [...item.cards];
         updatedCards[cardIndex] = {
           ...updatedCards[cardIndex],
@@ -192,10 +191,10 @@ export default function Services() {
       <div className="flex items-center gap-2 overflow-x-auto bg-white p-3 rounded-2xl border border-neutral-200 shadow-2xs">
         {ventures?.map((venture) => (
           <button
-            key={venture._id}
-            onClick={() => setActiveTabId(venture._id)}
+            key={venture.service_id}
+            onClick={() => setActiveTabId(venture.service_id)}
             className={`cursor-pointer px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
-              activeTabId === venture._id
+              activeTabId === venture.service_id
                 ? "bg-neutral-900 text-white shadow-xs"
                 : "bg-neutral-50 text-neutral-600 hover:bg-neutral-100 border border-neutral-200"
             }`}
@@ -267,7 +266,7 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {activeVenture?.cards?.map((card, index) => (
               <div
-                key={card._id || card.id || index}
+                key={card.service_id || card.id || index}
                 className="p-4 bg-neutral-50 rounded-2xl border border-neutral-200 space-y-3"
               >
                 <div className="flex items-center justify-between">
