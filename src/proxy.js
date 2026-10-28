@@ -3,6 +3,8 @@ import { getUserserver } from '@/lib/getUserserver'
 
 const PUBLIC_PATHS = [
   '/',
+  '/favicon.io',
+  '/landing-src',
   '/auth',
   '/api/auth',
   '/_next',
